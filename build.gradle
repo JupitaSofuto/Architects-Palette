@@ -2,12 +2,14 @@ buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://maven.moddingx.org/' }
 //        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+        classpath group: 'org.moddingx', name: 'ModGradle', version: '3.1.2'
     }
 }
 
@@ -28,6 +30,8 @@ group = 'architectspalette.core.ArchitectsPalette'
 archivesBaseName = "${project.modName}-${project.minecraftVersion}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+apply plugin: "org.moddingx.modgradle.sourcejar"
 
 mixin {
     add sourceSets.main, "${project.modId}.refmap.json"
